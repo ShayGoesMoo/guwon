@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Guwon - Your Favourite List</title>
+    </head>
+    <body>
+        <div class="form-wrapper">
+            <div class="form-tabs">
+                <button type="button" class="form-tab active" data-tab="register">Register</button>
+                <button type="button" class="form-tab" data-tab="login">Login</button>
+            </div>
+            <form class="form-container" id="registerForm">
+                <label for="display-name">Display Name</label>
+                <input type="text" id="display-name" name="display-name">
+
+                <label for="username">Username</label>
+                <input type="text" id="register-username" name="register-username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="register-password" name="register-password" required>
+
+                <input type="submit" id="register-submit" value="Register">
+            </form>
+            <form class="form-container" id="loginForm">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" name="login-username" required>
+
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="login-password" required>
+
+                <input type="submit" id="login-submit" value="Login">
+            </form>
+        </div>
+
+        <script src="auth.js"></script>
+    </body>
+</html>

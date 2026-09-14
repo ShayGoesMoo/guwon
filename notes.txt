@@ -1,0 +1,8 @@
+In scope:
+
+User accounts — just two: you and your friend. Doesn't need public signup, password reset flows, or social login. Basic email/password auth is enough.
+Titles — a single "title" entry: name, type (manga/manhwa/manhua/novel/anime), and maybe a link if it's official/legal to read/watch.
+Per-user status — each of you can mark a title as want-to-read / in-progress / completed, independently. This is the join table I mentioned — status belongs to the person, not the title.
+Per-user rating + note — a simple score (stars or 1–10) and a short remark, once completed. This is the "exchange remarks" behavior you already do, just persisted instead of lost in chat.
+Adding a title — either of you can add one, optionally tagging it as "recommended for [the other person]."
+A basic list view — see all titles, filter by status, see both of your ratings side by side.

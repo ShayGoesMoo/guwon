@@ -47,3 +47,47 @@ async function registerUser(registerForm) {
 
     window.location.href = "../home";
 }
+
+// login form submission logic
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const loginForm = document.getElementById("loginForm");
+    loginUser(loginForm);
+});
+
+async function resolveIdentifer(identifier) {
+    if (identifier.includes("@")) {
+        return identifier;
+    }
+
+    const { data, error } = await supabaseClient.rpc("get_email_for_login", { identifier });
+
+    if (error || !data) {
+        return null;
+    }
+
+    return data;
+}
+
+async function loginUser(loginForm) {
+    const identifier = loginForm.querySelector("#login-identifier").value.trim();
+    const password = loginForm.querySelector("#login-password").value;
+    const email = await resolveIdentifer(identifier);
+
+    if (!email) {
+        console.log("No account found.");
+        return;
+    }
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password,
+    });
+
+    if (error) {
+        console.log("Login failed: " + error.message);
+        return;
+    }
+
+    window.location.href = "../home";
+}
